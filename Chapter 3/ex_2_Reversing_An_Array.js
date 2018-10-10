@@ -6,11 +6,16 @@ function reverseArray(array) {
   return reversed_array;
 }
 
-function reverseArrayInPlace(array2){
+// This did not work.
+// After looking at an answer it seems that I was trying to change the
+// variable outside of the scope of the function.  It just wanted me to
+// change it in the function.  This is here to show the first idea.
+function reverseArrayInPlace(){
   num_runs = array2.length;
   for (i = 0; i < num_runs; i++){
     array2.unshift(array2.pop());
   }
+  console.log(array2);
   return array2;
 }
 
@@ -18,5 +23,5 @@ function reverseArrayInPlace(array2){
 let array = [1, 2, 3, 4, 5];
 console.log(reverseArray(array));
 
-let array2 = [6,7,8,9,10];
-console.log(reverseArrayInPlace(array2));
+var array2 = [6,7,8,9,10];
+console.log(reverseArrayInPlace());
