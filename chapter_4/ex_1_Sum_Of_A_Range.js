@@ -1,27 +1,25 @@
+// Sum over a given range. Write both the sum and range functions.
+// so that console.log(sum(range(1, 10)) will produce 55
+// Allow for positive and negative step sizes.
 
-const range = function(start, end, step){
-  step = (step || 1);
-  array = [];
-  if (start > end && step < 0) {
-    for (i = start; i >= end; i += step){
-      array.push(i);
-  	}
-  } else {
-    for (i = start; i <= end; i += step){
-      array.push(i);
-    }
-  }
-  console.log("The array!", array);
-  return array;
+function sum(array) {
+  return array.reduce((summ, element) => {
+    return summ + element
+  });
 }
 
-const sum_of_range = function(array) {
-  sum = 0;
-  for (let i of array) {
-    sum += Number(i);
+function range(a, b, step = 1) { 
+  let array = [];
+  operator = step > 0 ? '<=' : '>=';
+  // eval is generally frowned upon. eval(':(')
+  for(i = a; eval(i + operator + b); i += step) {
+    array.push(i) 
   }
-  return sum;
+  return array
 }
 
-// Test Case
-console.log("The sum of the range!", sum_of_range(range(5, 2, -1)));
+console.log(sum(range(1, 10)) == 55)
+console.log(sum(range(1, 10, 2)) == 25)
+console.log(sum(range(10, 1, -1)) == 55)
+console.log(sum(range(10, 1, -1)) == 55)
+console.log(sum(range(5, 2, -1)) == 14)
