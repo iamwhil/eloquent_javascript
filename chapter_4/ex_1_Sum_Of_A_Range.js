@@ -10,12 +10,19 @@ function sum(array) {
 
 function range(a, b, step = 1) { 
   let array = [];
-  operator = step > 0 ? '<=' : '>=';
-  // eval is generally frowned upon. eval(':(')
-  for(i = a; eval(i + operator + b); i += step) {
+  operator = step > 0 ? lessThan : greaterThan;
+  for(i = a; operator(i, b); i += step) {
     array.push(i) 
   }
   return array
+}
+
+function lessThan(a, b) {
+  return a <= b
+}
+
+function greaterThan(a, b) {
+  return a >= b
 }
 
 console.log(sum(range(1, 10)) == 55)
