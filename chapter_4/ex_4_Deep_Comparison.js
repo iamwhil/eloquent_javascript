@@ -1,41 +1,30 @@
-function testNull(a, b){
-  if (a == null || b == null){
-    if (a == b){
-      return true;
+// Write a deepEquals method which compares the values of objects recursively 
+
+function deepEquals(a, b) { 
+  if(a == undefined || b == undefined || a.length != b.length) { return false };
+
+  for(let x in a) { 
+    // if a[x] is an object but not null dig deeper
+    if(typeof(a[x]) == 'object' && (a[x] != null || b[x] != null)) {
+      return deepEquals(a[x], b[x]);
     } else {
-      return false;
+      if(a[x] != b[x]) { return false };
     }
   }
+  return true
 }
 
-function testValues(a, b){
+test1 = [[1, 2, [3, 4]], [1, 2, [3, 4]], true]
+test2 = [[1, 2, [3, 4]], [1, 2, [3, 5]], false]
+test3 = [{ oh: 'hi', there: 'friend', hows: { it: 'going' } }, { oh: 'hi', there: 'friend', hows: { it: 'going' } }, true]
+test4 = [{ oh: 'hi', there: 'friend', hows: { it: 'going' } }, { oh: 'hi', there: 'friend', hows: { it: 'brah' } }, false]
+test5 = [{ oh: 'hi', there: 'friend', hows: { it: 'going' } }, { oh: 'hi', there: 'friend', howIs: { it: 'going' } }, false]
+test6 = [[1, 2, null], [1, 2, [3, 4]], false]
+test6 = [[1, 2, null], [1, 2, null], true]
 
-}
-
-function testObjects(a, b){
-  if (Object.keys(a).length == Object.keys(b).length){
-    let array = Object.keys(a);
-    for(let k of array){
-      if(a[k] != b[k]){
-        return false;
-      }
-    }
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function deepEquals(a, b){
-  if (a == null || b == null){ return testNull(a, b); }
-  if (typeof(a) == 'object' || typeof(b) == 'object'){ return testObjects(a, b);}
-  else { return a == b }
-}
-// Test Cases
-
-let a = 1;
-let b = 2;
-console.log(deepEquals(a, b));
-let c = {key1: 'hello', key2: 'bye'};
-let d = {key1: 'hello', key2: 'bye2'};
-console.log(deepEquals(c, d));
+console.log(deepEquals(test1[0], test1[1]) == test1[2])
+console.log(deepEquals(test2[0], test2[1]) == test2[2])
+console.log(deepEquals(test3[0], test3[1]) == test3[2])
+console.log(deepEquals(test4[0], test4[1]) == test4[2])
+console.log(deepEquals(test5[0], test5[1]) == test5[2])
+console.log(deepEquals(test6[0], test6[1]) == test6[2])
