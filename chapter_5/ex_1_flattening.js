@@ -7,7 +7,7 @@ function flatten(array) {
 }
 
 function reduceArray(summ, element) {
-  if(typeof(element) == 'object') { 
+  if(Array.isArray(element)) { 
     return summ.concat(flatten(element))
   } else {
     return summ.concat(element)
