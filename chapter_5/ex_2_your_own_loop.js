@@ -5,7 +5,7 @@
 // Finally it calls the update function to create a new value and starts from the beginning.
 // When defining the fucntion you can use a regular loop to do the actual looping.
 
-function test(value) { 
+function lessThanTen(value) { 
   return value < 10;
 }
 
@@ -26,4 +26,4 @@ function somethingLikeAForLoop(initialValue, test, body, update) {
   return value
 }
 
-console.log(somethingLikeAForLoop(1, test, body, update))
+console.log(somethingLikeAForLoop(1, lessThanTen, body, update))
