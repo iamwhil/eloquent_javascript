@@ -2,6 +2,7 @@
 // its constructor creates an empty group, add adds a value if it is not alreay a member,
 // delete removes a member, and has returns a boolean indicating if the member is already
 // a member of the group.
+// create a static method to create a new group from an iterable object passed in.
 
 // Thoughts I kind of want to just do this as a class. However, having the keys be property names
 // leaves me open to someone adding 'has' to the group which is already a property of the group.
@@ -19,6 +20,20 @@ class Group {
 
   delete(key) {
     delete this.members[key]
+  }
+
+  static from(iterable) { 
+    group = new Group()
+    if(typeof(iterable) == 'object') {
+      for(let x in iterable) {
+        group.members[x] = true
+      }
+    } else {
+      for(let x of iterable) { 
+        group.members[x] = true
+      }
+    }
+    return group
   }
 
   has(key) {
@@ -44,3 +59,12 @@ group.delete('dog')
 console.log(group)
 
 console.log(group.has('dog'))
+
+let array = ['a', 'b', 'c']
+
+group_from_array = Group.from(array)
+console.log(group_from_array)
+
+object = {'a': 'true', 'b': 'sure', 'joe': 'cool'}
+group_from_object = Group.from(object)
+console.log(group_from_object)
