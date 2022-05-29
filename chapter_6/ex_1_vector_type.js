@@ -8,7 +8,7 @@ class Vec {
     this.y = y;
   }
 
-  length() { 
+  get length() { 
     return Math.sqrt(this.x**2 + this.y**2)
   }
 
@@ -23,11 +23,11 @@ class Vec {
 
 vector1 = new Vec(3, 4);
 vector2 = new Vec(3, 4);
-console.log(vector1.length()); // 5
+console.log(vector1.length); // 5
 
 const vectorSum = vector1.plus(vector2)
-console.log(vectorSum.length()) // 10
+console.log(vectorSum.length) // 10
 
 const vectorDiff = vector1.minus(vector2)
-console.log(vectorDiff.length())
+console.log(vectorDiff.length)
 
