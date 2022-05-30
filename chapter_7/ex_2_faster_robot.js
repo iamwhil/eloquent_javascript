@@ -58,7 +58,7 @@ function nearestParcel(place, parcels) {
   return parcels[shortestRoute];
 }
 
-const runCount = 100;
+const runCount = 1000;
 robots = [randomRobot, routeRobot, goalOrientedRobot, fasterRobot]
 
 assessRobots(runCount, robots)
