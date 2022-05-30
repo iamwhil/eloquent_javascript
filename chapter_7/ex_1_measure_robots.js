@@ -18,10 +18,6 @@ const {
   randomRobot
 } = require('./robot_project.js')
 
-runRobot(VillageState.random(), randomRobot);
-runRobot(VillageState.random(), routeRobot);
-runRobot(VillageState.random(), goalOrientedRobot);
-
 function assessRobots(runCount, robots) {
   robots.forEach((robot) => {
     let runResults = []

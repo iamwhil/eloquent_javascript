@@ -139,4 +139,6 @@ function goalOrientedRobot({place, parcels}, route) {
 
 module.exports = {roadGraph, roads, buildGraph, VillageState, runRobot, randomPick, mailRoute, routeRobot, findRoute, goalOrientedRobot, randomRobot};
 
-// runRobot(VillageState.random(), goalOrientedRobot);
+// console.log(runRobot(VillageState.random(), randomRobot));
+// console.log(runRobot(VillageState.random(), routeRobot));
+// console.log(runRobot(VillageState.random(), goalOrientedRobot));
