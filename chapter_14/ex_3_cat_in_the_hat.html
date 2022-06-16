@@ -1,0 +1,31 @@
+<!doctype html>
+
+<meta charset="utf8">
+
+<style>body { min-height: 200px }</style>
+
+<body>
+  <img src="cat.png" id="cat" style="position: absolute">
+  <img src="hat.png" id="hat" style="position: absolute">  
+</body>
+
+<script>
+  let cat = document.getElementById('cat')
+  let hat = document.getElementById('hat')
+  let angle = Math.PI / 2;
+  const horizontalTravel = 200
+  const catWidth = 74
+  const catHeight = 120
+
+  function animate(time, lastTime) {
+    if (lastTime != null) {
+      angle += (time - lastTime) *0.001
+    }
+    cat.style.top = (Math.sin(angle) * 20 + (catHeight/2)) + "px"
+    cat.style.left = (Math.cos(angle) * horizontalTravel + (horizontalTravel/2 + catWidth/2)) + "px"
+    hat.style.top = (Math.sin(angle) * -20 + 20) + "px"
+    hat.style.left = (Math.cos(angle) * -horizontalTravel + (horizontalTravel/2 + 45)) + "px"
+    requestAnimationFrame(newTime => animate(newTime, time))
+  }
+  requestAnimationFrame(animate)
+</script>
