@@ -178,3 +178,35 @@ run(`
       *(base, pow(base, -(exp, 1)))))),
     print(pow(2, 10)))
 `)
+
+topScope.array = (...values) => {
+  return Array.from(values)
+}
+
+topScope.length = (array) => { 
+  return array.length
+}
+
+topScope.element = (array, n) => {
+  return array[n]
+}
+
+run(`
+  print(length(array(1,2,3)))
+`)
+
+run(`
+  print(element(array(1,2,3), 1))
+`)
+
+// even copy/pasted from the eloquentjavascript site this is returning undefined.
+run(`
+do(define(sum, fun(array,
+     do(define(i, 0),
+        define(sum, 0),
+        while(<(i, length(array)),
+          do(define(sum, +(sum, element(array, i))),
+             define(i, +(i, 1)))),
+        sum))),
+   print(sum(array(1, 2, 3))))
+`)
