@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<body>
+
+  <p id="balloon" style="text-align:center; font-size:20px; position:absolute; top:50%; left:50%">
+    🎈
+  </p>
+
+</body>
+
+<script>
+  const balloon = document.getElementById('balloon')
+  console.log("SIZE: ", balloon.style.fontSize)
+  const regex = /\d+/
+  let balloonSize = regex.exec(balloon.style.fontSize)[0]
+  console.log("baloon size: ", balloonSize)
+  window.addEventListener("keydown", event => {
+    if (event.key == 'ArrowUp') {
+      balloonSize *= 1.1
+      balloon.style.fontSize = balloonSize + 'px'
+      balloon.style.left = regex.exec(document.body.style.width)[0] - balloonSize/2 + 'px'
+      balloon.style.top = regex.exec(document.body.style.height)[0] - regex.exec(balloon.style.height)[0]/2 + 'px'
+      event.preventDefault()
+    } else if (event.key == "ArrowDown") {
+      balloonSize *= 0.9
+      balloon.style.fontSize = balloonSize + 'px'
+      event.preventDefault()
+    }
+  })
+
+</script>
